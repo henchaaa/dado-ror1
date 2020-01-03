@@ -21,6 +21,7 @@ class ServiceOrdersController < ApplicationController
 
   # POST /service_orders
   def create
+    binding.pry
     @service_order = ServiceOrder.new(service_order_params)
 
     respond_to do |format|
@@ -60,6 +61,6 @@ class ServiceOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_order_params
-      params.fetch(:service_order, {})
+      params.require(:service_order).permit!
     end
 end

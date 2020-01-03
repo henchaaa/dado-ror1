@@ -1,16 +1,19 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  host: '127.0.0.1'
+  port: '5432'
   # For details on connection pooling, see Rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: my_username
-  password: "password"
+  
+  username: postgres  
+  password: "admin"
 
 development:
   <<: *default
-  database: dado_development  
+  database: hello_world_development  
 
 test:
   <<: *default
-  database: dado_test
+  database: hello_world_test

@@ -11,7 +11,44 @@
     </div>
   <% end %>
 
+ <hr>
+  Pasūtijuma numurs: <%= form.text_field(:number) %>
+  <br> 
+
+  Pieņemšanas datums: <%= form.date_field(:date) %> 
+  <br>
+
+  Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'])%> 
+  <br>
+
+  Iekārtas veids: <%= form.text_field(:device_name) %> 
+  <br>
+
+  Parole: <%= form.text_field(:device_password) %> 
+  <br>
+
+  Garantija:<%= form.check_box(:device_warranty) %> 
+  <br>
+
+  Papildaprīkojums:<%= form.text_field(:device_extras)%>
+  <br>
+
+  Saglabājamā informācija:<%= form.text_field(:device_saveable_info)%>
+  <br>
+
+  Defekts:<%= form.text_field(:device_defect)%>
+  <br>
+
+  Papildus info:<%= form.text_field(:device_additional_info)%>
+  <br>
+  <%= form.hidden_field(:user_id, :value => 1) %>
+  <%= form.hidden_field(:client_id, :value => 1) %>
+
+
   <div class="actions">
     <%= form.submit %>
   </div>
+  
 <% end %>
+
+

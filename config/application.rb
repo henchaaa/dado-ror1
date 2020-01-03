@@ -31,3 +31,4 @@ module Dado
     config.generators.system_tests = nil
   end
 end
+PHONE_PREFIXES = ["00371"].freeze
