@@ -58,10 +58,10 @@ GEM
       debug_inspector (>= 0.0.1)
     bootsnap (1.4.5)
       msgpack (~> 1.0)
-    bootstrap (4.0.0)
-      autoprefixer-rails (>= 6.0.3)
-      popper_js (>= 1.12.9, < 2)
-      sass (>= 3.5.2)
+    bootstrap (4.3.1)
+      autoprefixer-rails (>= 9.1.0)
+      popper_js (>= 1.14.3, < 2)
+      sassc-rails (>= 2.0.0)
     builder (3.2.4)
     coderay (1.1.2)
     coffee-rails (4.2.2)
@@ -249,7 +249,7 @@ DEPENDENCIES
   better_errors
   binding_of_caller
   bootsnap (>= 1.1.0)
-  bootstrap (~> 4.0.0)
+  bootstrap (~> 4.3.1)
   coffee-rails (~> 4.2)
   jbuilder (~> 2.5)
   jquery-rails
