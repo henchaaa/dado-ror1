@@ -1,4 +1,30 @@
 <p id="notice"><%= notice %></p>
 
+ <table>
+   <tr>
+     <th> Pasūtijuma numurs </th>
+     <th> Pieņemšanas datums </th>
+     <th> Iekārtas veids </th>
+     <th> Parole </th>
+     <th> Garantija </th>
+     <th> Papildaprīkojums </th>
+     <th> Saglabājamā info </th>
+     <th> Defekts </th>
+     <th> Papildus info </th>
+   </tr>
+   <tr>
+     <td> <%= @service_order.number %> </td>
+     <td> <%= @service_order.date %> </td>
+     <td> <%= @service_order.location %> </td>
+     <td> <%= @service_order.device_name %> </td>
+     <td> <%= @service_order.device_password %> </td>
+     <td> <%= @service_order.device_warranty %> </td>
+     <td> <%= @service_order.device_extras %> </td>
+     <td> <%= @service_order.device_saveable_info %> </td>
+     <td> <%= @service_order.device_defect %> </td>
+     <td> <%= @service_order.device_additional_info %> </td>
+   </tr>
+ </table>
+
 <%= link_to 'Edit', edit_service_order_path(@service_order) %> |
 <%= link_to 'Back', service_orders_path %>

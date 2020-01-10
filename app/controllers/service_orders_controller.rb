@@ -8,6 +8,7 @@ class ServiceOrdersController < ApplicationController
 
   # GET /service_orders/1
   def show
+    @service_order = ServiceOrder.find(params[:id])
   end
 
   # GET /service_orders/new
