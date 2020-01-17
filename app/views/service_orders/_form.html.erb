@@ -41,6 +41,14 @@
 
   Papildus info:<%= form.text_field(:device_additional_info)%>
   <br>
+  <%= form.fields_for("client") do |client_form| %>
+    <%= client_form.text_field(:first_name) %>
+    <%= client_form.text_field(:last_name) %>
+    <%= client_form.text_field(:phone_prefix) %>
+    <%= client_form.text_field(:phone_number) %>
+    <%= client_form.text_field(:email) %>
+  <% end %>
+
   <%= form.hidden_field(:user_id, :value => 1) %>
   <%= form.hidden_field(:client_id, :value => 1) %>
 

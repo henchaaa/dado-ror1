@@ -15,7 +15,8 @@ module ServiceOrder::Contract
     property :device_defect
     property :device_additional_info
 
-    property :client do
+   # property(:client, populator: :populate_client!) do
+    property(:client) do
       property :first_name
       property :last_name
       property :phone_prefix
@@ -32,8 +33,13 @@ module ServiceOrder::Contract
     #     )
     #   end
 
+    #   # if client.blank?
+    #   #   self.client = 
+    #   # end
+
     #   nil
     # end
+
 
     private
   end
