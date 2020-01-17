@@ -2,45 +2,41 @@
 
 module ServiceOrder::Contract
   class Form < Reform::Form
-    model(ServiceOrder)
+    include Reform::Form::Composition
 
-    property :date
-    property :location
+    model :service_order
 
-    property :device_name
-    property :device_password
-    property :device_warranty
-    property :device_extras
-    property :device_saveable_info
-    property :device_defect
-    property :device_additional_info
+    delegate(
+      :id, :persisted?, to: :service_order, prefix: false
+    )
 
-   # property(:client, populator: :populate_client!) do
-    property(:client) do
-      property :first_name
-      property :last_name
-      property :phone_prefix
-      property :phone_number
-      property :email
+    property :date, on: :service_order
+    property :location, on: :service_order
+
+    property :device_name, on: :service_order
+    property :device_password, on: :service_order
+    property :device_warranty, on: :service_order
+    property :device_extras, on: :service_order
+    property :device_saveable_info, on: :service_order
+    property :device_defect, on: :service_order
+    property :device_additional_info, on: :service_order
+
+    property(:client, on: :service_order) do
+      property :first_name, on: :client
+      property :last_name, on: :client
+      property :phone_prefix, on: :client
+      property :phone_number, on: :client
+      property :email, on: :client
     end
 
-    # def prepopulate!(_options={})
-    #   if person_phone_numbers.none?
-    #     person_phone_number = PersonPhoneNumber.new
-
-    #     person_phone_numbers << Client::Contract::PersonPhoneNumberForm.new(
-    #       person_phone_number
-    #     )
-    #   end
-
-    #   # if client.blank?
-    #   #   self.client = 
-    #   # end
-
-    #   nil
-    # end
-
-
     private
+
+      def service_order
+        model[:service_order]
+      end
+
+      def client
+        model[:client]
+      end
   end
 end

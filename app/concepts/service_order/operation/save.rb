@@ -2,39 +2,45 @@
 
 class ServiceOrder::Save < Trailblazer::Operation
   # This operation is for Creating and Editing the composite
-  # Client (and PersonPhoneNumber) records
+  # ServiceOrder and Client records
 
   # #new and #create only need params
   # #edit and #update have to pass the existing record in the options
   # example:
-  #  Client::Save.call(
+  #  ServiceOrder::Save.call(
   #    params["resource"],
-  #    "model" => Client.find_by(id: params[:id]) || Client.new
+  #    "model" => ServiceOrder.find_by(id: params[:id]) || ServiceOrder.new
   #  )
 
   class Present < Trailblazer::Operation
     step :setup_model!
+    step :setup_contract!
 
-    step(
-      Contract::Build(
-        name: "resource", constant: ServiceOrder::Contract::Form
-      )
-    )
+    private
 
-    def setup_model!(options, **)
-      options["model"] ||= ServiceOrder.new
-    end
+      def setup_model!(options, **)
+        options["model"] ||= ServiceOrder.new
+      end
+
+      def setup_contract!(options, **)
+        options["contract.resource"] ||= ServiceOrder::Contract::Form.new(
+          service_order: options["model"],
+          client: options["model"].client.presence || Client.new
+        )
+      end
   end
 
   step Nested(ServiceOrder::Save::Present)
-  step Contract::Validate(name: "resource")
+  step :validate!
   step :persist!
 
   private
 
-    def persist!(options, **)
-      # return false if options["validations_failed"]
+    def validate!(options, **)
+      # TODO, collect validation errors and return false if any present
+    end
 
+    def persist!(options, **)
       options["contract.resource"].save do |hash|
       end
     end
