@@ -13,7 +13,8 @@ class ServiceOrdersController < ApplicationController
 
   # GET /service_orders/new
   def new
-    @service_order = ServiceOrder.new
+    op = ServiceOrder::Save::Present.call
+    @service_order = op["contract.resource"]
   end
 
   # GET /service_orders/1/edit
@@ -22,7 +23,8 @@ class ServiceOrdersController < ApplicationController
 
   # POST /service_orders
   def create
-    binding.pry
+    outcome = ServiceOrder::Save.call(params, current_user: current_user)
+
     @service_order = ServiceOrder.new(service_order_params)
 
     respond_to do |format|

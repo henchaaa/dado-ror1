@@ -5,6 +5,14 @@ ruby '2.6.5'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
+
+gem "trailblazer", ">= 2.0.7", "< 2.1"
+gem "trailblazer-rails", "~> 1.0.11"
+
+# Disposable::Twin API for Reform. 0.3.2 Provides Property::Hash
+gem "disposable", ">= 0.3.2" # currently ~ 0.4.4
+gem "reform-rails", "~> 0.1.7" # installs Reform 2.2.4
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
@@ -48,7 +56,7 @@ group :test do
 end
 
 
-#boorstrap 
+#boorstrap
 gem 'bootstrap', '~>4.0.0'
 
 gem 'jquery-rails'
