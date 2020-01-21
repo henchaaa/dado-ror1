@@ -25,7 +25,7 @@ class ServiceOrdersController < ApplicationController
   def create
     outcome = ServiceOrder::Save.call(params, current_user: current_user)
 
-    @service_order = ServiceOrder.new(service_order_params)
+    # @service_order = ServiceOrder.new(service_order_params)
 
     respond_to do |format|
       if @service_order.save

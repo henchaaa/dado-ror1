@@ -22,11 +22,15 @@ module ServiceOrder::Contract
     property :device_additional_info, on: :service_order
 
     property(:client, on: :service_order) do
-      property :first_name, on: :client
-      property :last_name, on: :client
-      property :phone_prefix, on: :client
-      property :phone_number, on: :client
-      property :email, on: :client
+      property :first_name, on: :client_form
+      property :last_name, on: :client_form
+      property :phone_prefix, on: :client_form
+      property :phone_number, on: :client_form
+      property :email, on: :client_form
+    end
+
+    def client_form
+      Client::Contract::Form.new(client)
     end
 
     private

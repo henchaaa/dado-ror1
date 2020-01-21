@@ -13,6 +13,8 @@ gem "trailblazer-rails", "~> 1.0.11"
 gem "disposable", ">= 0.3.2" # currently ~ 0.4.4
 gem "reform-rails", "~> 0.1.7" # installs Reform 2.2.4
 
+# gem "simple_form", "~> 5.0"
+
 # Use postgresql as the database for Active Record
 gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server

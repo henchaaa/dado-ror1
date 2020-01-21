@@ -18,16 +18,16 @@
   Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'])%>
   <br>
 
-  <%= form.fields_for(:client) do |client_form| %>
-    Klienta vārds: <%= form.text_field(:client_first_name) %>
+  <%= form.fields_for("client", service_order.client_form) do |client_form| %>
+    Klienta vārds: <%= client_form.text_field(:first_name).gsub("service_order[client_attributes]", "service_order[client]").html_safe %>
     <br>
-    Klienta uzvārds: <%= form.text_field(:client_last_name) %>
+    Klienta uzvārds: <%= client_form.text_field(:last_name).gsub("service_order[client_attributes]", "service_order[client]").html_safe %>
     <br>
-    Klienta tālruņa numura prefikss: <%= form.text_field(:client_phone_prefix) %>
+    Klienta tālruņa numura prefikss: <%= client_form.text_field(:phone_prefix).gsub("service_order[client_attributes]", "service_order[client]").html_safe %>
     <br>
-    Klienta tālruņa numurs: <%= form.text_field(:client_phone_number) %>
+    Klienta tālruņa numurs: <%= client_form.text_field(:phone_number).gsub("service_order[client_attributes]", "service_order[client]").html_safe %>
     <br>
-    Klienta epasts: <%= form.text_field(:client_email) %>
+    Klienta epasts: <%= client_form.text_field(:email).gsub("service_order[client_attributes]", "service_order[client]").html_safe %>
     <br>
   <% end %>
 
