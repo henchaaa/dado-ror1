@@ -59,8 +59,9 @@ end
 
 
 #boorstrap
-gem 'bootstrap', '~>4.0.0'
+gem 'bootstrap', '~>4.4.1'
+gem 'sprockets-rails', '~>2.3.2'
 
-gem 'jquery-rails'
+gem 'jquery-rails', '4.3.5'
 
 gem 'rails_admin', '~> 2.0'
