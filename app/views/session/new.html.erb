@@ -1,9 +1,14 @@
-<h1>Login</h1>
+<%= stylesheet_link_tag "sessions" %>
+<body>
+ <div class="login_box">
+  <h2>Datoru Doktorāts</h2>
+  <%= form_tag(login_path) do %>
+    <%#= label_tag :email %>
+    <%= text_field_tag :email, "Email", class:"login_field" %> <br>
+    <%#= label_tag :password %>
+    <%= password_field_tag :password, "Password", class:"login_field" %> <br>
+    <%= submit_tag "Login", class:"login_button" %>
+  <%end%>
 
-<%= form_tag(login_path) do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <%= submit_tag "Login" %>
-<%end%>
+ </div>
+</body>
