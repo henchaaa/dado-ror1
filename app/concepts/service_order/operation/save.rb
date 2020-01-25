@@ -38,11 +38,6 @@ class ServiceOrder::Save < Trailblazer::Operation
 
   private
 
-    def validate!(options, **)
-      # TODO, collect validation errors and return false if any present
-      true
-    end
-
     def persist!(options, **)
       options["contract.resource"].save do |params|
         client = nil
