@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_03_132124) do
+ActiveRecord::Schema.define(version: 2020_01_25_133448) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(version: 2020_01_03_132124) do
     t.index ["last_name"], name: "index_clients_on_last_name"
     t.index ["phone_number"], name: "index_clients_on_phone_number"
     t.index ["phone_prefix"], name: "index_clients_on_phone_prefix"
+  end
+
+  create_table "repair_tasks", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "repairer_id", null: false
+    t.integer "service_order_id", null: false
+    t.integer "status", default: 0, null: false
+    t.string "currency", null: false
+    t.integer "work_cost_cents", default: 0, null: false
+    t.integer "materials_cost_cents", default: 0, null: false
+    t.index ["repairer_id"], name: "index_repair_tasks_on_repairer_id"
+    t.index ["status"], name: "index_repair_tasks_on_status"
   end
 
   create_table "service_orders", force: :cascade do |t|

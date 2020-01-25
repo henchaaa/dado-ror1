@@ -28,6 +28,13 @@ gem 'uglifier', '>= 1.3.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
+
+#boorstrap
+gem 'bootstrap', '~>4.4.1'
+gem 'sprockets-rails', '~>2.3.2'
+
+gem 'jquery-rails', '4.3.5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
@@ -38,6 +45,9 @@ gem "wkhtmltopdf-binary", ">= 0.12"
 
 # Generates PDFs from HTML
 gem "wicked_pdf", "~> 1.4"
+
+# Admin interface under /admin
+gem "rails_admin", "~> 2.0"
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
@@ -61,14 +71,7 @@ group :development do
 end
 
 group :test do
-  gem "rspec-rails"
-  gem "simplecov"
+  gem "rspec-rails", "~> 3.9"
+  gem "shoulda-matchers", ">= 4.2"
+  gem "simplecov", "~> 0.17"
 end
-
-#boorstrap
-gem 'bootstrap', '~>4.4.1'
-gem 'sprockets-rails', '~>2.3.2'
-
-gem 'jquery-rails', '4.3.5'
-
-gem 'rails_admin', '~> 2.0'
