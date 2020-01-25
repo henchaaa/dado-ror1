@@ -1,9 +1,41 @@
 class ServiceOrdersController < ApplicationController
-  before_action :set_service_order, only: [:show, :edit, :update, :destroy]
+  before_action :set_service_order, only: [:show, :destroy]
 
   # GET /service_orders
   def index
     @service_orders = ServiceOrder.all.order(id: :desc).limit(10)
+  end
+
+  # GET /service_orders/new
+  def new
+    @service_order ||= begin
+      op = ServiceOrder::Save::Present.call
+      op["contract.resource"]
+    end
+  end
+
+  # POST /service_orders
+  def create
+    outcome = ServiceOrder::Save.call(
+      service_order_params, current_user: current_user
+    )
+
+    respond_to do |format|
+      if outcome.success?
+        format.html do
+          redirect_to(
+            service_order_path(id: outcome["model"].id),
+            notice: "Service order created."
+          )
+        end
+      else
+        format.html do
+          @service_order = outcome["contract.resource"]
+          flash.now[:alert] = "There are service order validation errors."
+          render :new
+        end
+      end
+    end
   end
 
   # GET /service_orders/1
@@ -11,29 +43,8 @@ class ServiceOrdersController < ApplicationController
     @service_order = ServiceOrder.find(params[:id])
   end
 
-  # GET /service_orders/new
-  def new
-    op = ServiceOrder::Save::Present.call
-    @service_order = op["contract.resource"]
-  end
-
   # GET /service_orders/1/edit
   def edit
-  end
-
-  # POST /service_orders
-  def create
-    outcome = ServiceOrder::Save.call(params, current_user: current_user)
-
-    # @service_order = ServiceOrder.new(service_order_params)
-
-    respond_to do |format|
-      if @service_order.save
-        format.html { redirect_to @service_order, notice: 'Service order was successfully created.' }
-      else
-        format.html { render :new }
-      end
-    end
   end
 
   # PATCH/PUT /service_orders/1
@@ -64,6 +75,10 @@ class ServiceOrdersController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def service_order_params
-      params.require(:service_order).permit!
+      p = params[:service_order_contract].permit!.to_h
+
+      p["client"] = p.delete("client_attributes")
+
+      p
     end
 end
