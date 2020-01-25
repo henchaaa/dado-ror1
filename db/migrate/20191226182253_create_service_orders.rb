@@ -35,11 +35,11 @@ class CreateServiceOrders < ActiveRecord::Migration[5.2]
       # papildus info (par iekārtu) TEXT
       t.text(:device_additional_info, null:false, default:"")
     end
-    add_index(:service_orders, :number)  
+    add_index(:service_orders, :number, unique: true)
     add_index(:service_orders, :date)
-    add_index(:service_orders, :location) 
-    add_index(:service_orders, :user_id) 
-    add_index(:service_orders, :client_id) 
-    add_index(:service_orders, :device_name) 
+    add_index(:service_orders, :location)
+    add_index(:service_orders, :user_id)
+    add_index(:service_orders, :client_id)
+    add_index(:service_orders, :device_name)
   end
 end

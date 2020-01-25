@@ -5,25 +5,57 @@ RSpec.describe ServiceOrder::Save do
   describe ".call(params, options)" do
     subject(:call) { described_class.call(params, options) }
 
-    let(:options) { {} }
+    let(:options) { {current_user: user} }
+    let(:user) { User.create!(email: "test@test.com", password: "abc") }
+
+    let(:params) do
+      {
+        date: "2020-01-10",
+        location: "Ausekļa iela 9",
+        device_name: "Samsung galaxy",
+        device_password: "1234",
+        device_warranty: "0",
+        device_extras: "big speakers",
+        device_saveable_info: "",
+        device_defect: "",
+        device_additional_info: "",
+        client: {
+          first_name: "Augusts",
+          last_name: "Bautra",
+          phone_prefix: "00371",
+          phone_number: "29957771",
+          email: "a.b@gmail.com"
+        }
+      }
+    end
 
     context "when params are OK for saving a service order with a new client" do
-      let(:params) do
+      it "creates a service order and a client" do
+        expect{ call }.to(
+          change{ ServiceOrder.count }.by(1).
+          and change{ Client.count }.by(1)
+        )
 
+        is_expected.to be_success
       end
+    end
 
-      # {
-      #   "service_order"=>{
-      #     "date"=>"", "location"=>"Ausekļa iela 9",
-      #     "client"=>{"first_name"=>"kname", "last_name"=>"", "phone_prefix"=>"", "phone_number"=>"", "email"=>""},
-      #     "device_name"=>"", "device_password"=>"", "device_warranty"=>"0",
-      #     "device_extras"=>"", "device_saveable_info"=>"", "device_defect"=>"",
-      #     "device_additional_info"=>""
-      #   },
-      #   "commit"=>"Create Service order", "controller"=>"service_orders", "action"=>"create"
-      # }
-      it " " do
-        expect(0).to eq(1)
+    context "when params are OK for saving a service order for an existing client" do
+      it "creates a service order for the existing client" do
+        expect{ call }.to(
+          change{ ServiceOrder.count }.by(1).
+          and change{ Client.count }.by(0)
+        )
+
+        is_expected.to be_success
+      end
+    end
+
+    context "when params are bad and no creation can take place" do
+      let(:params) { {} }
+
+      it "returns an object with validation errors" do
+        is_expected.to_not be_success
       end
     end
   end

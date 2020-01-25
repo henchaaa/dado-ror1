@@ -4,7 +4,7 @@ module ServiceOrder::Contract
   class Form < Reform::Form
     include Reform::Form::Composition
 
-    model :service_order
+    # model :service_order
 
     delegate(
       :id, :persisted?, to: :service_order, prefix: false
@@ -21,26 +21,24 @@ module ServiceOrder::Contract
     property :device_defect, on: :service_order
     property :device_additional_info, on: :service_order
 
-    property(:client, on: :service_order) do
-      property :first_name, on: :client_form
-      property :last_name, on: :client_form
-      property :phone_prefix, on: :client_form
-      property :phone_number, on: :client_form
-      property :email, on: :client_form
+    property(:client, virtual: true) do
+      property :first_name, on: :client
+      property :last_name, on: :client
+      property :phone_prefix, on: :client
+      property :phone_number, on: :client
+      property :email, on: :client
     end
 
-    def client_form
-      Client::Contract::Form.new(client)
+    def service_order
+      model[:service_order]
+    end
+
+    def client
+      model[:client]
     end
 
     private
 
-      def service_order
-        model[:service_order]
-      end
 
-      def client
-        model[:client]
-      end
   end
 end
