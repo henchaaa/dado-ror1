@@ -3,3 +3,15 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 @import 'bootstrap';
+
+body {
+    margin: 0;
+}
+
+.header {
+    margin-top: 3%;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding: 2%;
+    background-color: #110934;
+}
