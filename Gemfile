@@ -33,6 +33,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
+# Binary for wkhtmltopdf for wicked_pdf
+gem "wkhtmltopdf-binary", ">= 0.12"
+
+# Generates PDFs from HTML
+gem "wicked_pdf", "~> 1.4"
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
 
