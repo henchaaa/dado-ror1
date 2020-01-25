@@ -33,8 +33,6 @@ class ServiceOrder::Save < Trailblazer::Operation
   end
 
   step Nested(ServiceOrder::Save::Present)
-  step :validate!
-  # step Contract::Validate(name: "resource", key: "resource")
   step Contract::Validate(name: "resource")
   step :persist!
 

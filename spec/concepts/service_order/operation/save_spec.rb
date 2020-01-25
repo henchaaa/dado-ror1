@@ -17,14 +17,14 @@ RSpec.describe ServiceOrder::Save do
         device_warranty: "0",
         device_extras: "big speakers",
         device_saveable_info: "",
-        device_defect: "",
+        device_defect: "b0rken",
         device_additional_info: "",
         client: {
-          first_name: "Augusts",
-          last_name: "Bautra",
+          first_name: "John",
+          last_name: "Doe",
           phone_prefix: "00371",
-          phone_number: "29957771",
-          email: "a.b@gmail.com"
+          phone_number: "29957752",
+          email: "j.d@gmail.com"
         }
       }
     end
@@ -41,6 +41,16 @@ RSpec.describe ServiceOrder::Save do
     end
 
     context "when params are OK for saving a service order for an existing client" do
+      let!(:client) do
+        Client.create(
+          first_name: "John",
+          last_name: "Doe",
+          phone_prefix: "00371",
+          phone_number: "29957752",
+          email: "j.d@gmail.com"
+        )
+      end
+
       it "creates a service order for the existing client" do
         expect{ call }.to(
           change{ ServiceOrder.count }.by(1).

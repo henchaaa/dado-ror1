@@ -27,7 +27,12 @@ module ServiceOrder::Contract
       property :phone_prefix, on: :client
       property :phone_number, on: :client
       property :email, on: :client
+
+      validates :first_name, :last_name, :phone_prefix, :phone_number, presence: true
     end
+
+    validates :date, :location, :device_name, :device_defect, presence: true
+    # validate :validate_email_format
 
     def service_order
       model[:service_order]
