@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 2020_01_25_133448) do
     t.index ["date"], name: "index_service_orders_on_date"
     t.index ["device_name"], name: "index_service_orders_on_device_name"
     t.index ["location"], name: "index_service_orders_on_location"
-    t.index ["number"], name: "index_service_orders_on_number", unique: true
+    t.index ["number"], name: "index_service_orders_on_number"
     t.index ["user_id"], name: "index_service_orders_on_user_id"
   end
 
