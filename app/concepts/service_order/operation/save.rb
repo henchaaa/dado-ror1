@@ -57,19 +57,26 @@ class ServiceOrder::Save < Trailblazer::Operation
           end
         end
 
+        service_order = nil
+
         if options["model"].persisted?
           # TODO
         else
           service_order = ServiceOrder.new(params[:service_order])
 
-          last_todays_record = ServiceOrder.
-            where(date: Date.current).order(id: :desc).limit(1).first
+          service_order_date = params[:service_order]["date"].to_date
+
+          last_service_order_on_the_date = ServiceOrder.
+            where(date: service_order_date).order(id: :desc).limit(1).first
 
           number =
-            if last_todays_record.blank?
-              "#{ Date.current }-0000"
+            if last_service_order_on_the_date.blank?
+              "#{ service_order_date }-0000"
             else
-              "#{ Date.current }-#{ last_todays_record.number.split("-").last.to_i.next }"
+              plus_one =
+                last_service_order_on_the_date.number.split("-").last.to_i.next
+
+              "#{ service_order_date }-#{ plus_one }"
             end
 
           service_order.update!(
@@ -78,6 +85,8 @@ class ServiceOrder::Save < Trailblazer::Operation
             client_id: client.id
           )
         end
+
+        options["model"] = service_order
       end
     end
 end

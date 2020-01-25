@@ -37,6 +37,14 @@ RSpec.describe ServiceOrder::Save do
         )
 
         is_expected.to be_success
+
+        expect(call["model"].date).to eq("2020-01-10".to_date)
+        expect(call["model"].number).to eq("2020-01-10-0000")
+
+        expect(call["model"].user_id).to eq(user.id)
+        expect(call["model"].client_id).to be_present
+
+        expect(call["model"].client).to be_present
       end
     end
 
@@ -58,6 +66,8 @@ RSpec.describe ServiceOrder::Save do
         )
 
         is_expected.to be_success
+
+        expect(call["model"].client).to eq(client)
       end
     end
 
