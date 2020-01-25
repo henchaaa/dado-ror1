@@ -46,6 +46,24 @@ RSpec.describe ServiceOrder::Save do
 
         expect(call["model"].client).to be_present
       end
+
+      context "when two submits come in one after the other" do
+        let(:params2) { params.merge(device_name: "iPhone") }
+
+        it "creates two service orders woith consecutive numbers" do
+          expect do
+            described_class.call(params, options)
+            described_class.call(params2, options)
+          end.to(
+            change{ ServiceOrder.count }.by(2).
+            and change{ Client.count }.by(1)
+          )
+
+          expect(ServiceOrder.pluck(:number).sort).to eq(
+            ["2020-01-10-0000", "2020-01-10-0001"]
+          )
+        end
+      end
     end
 
     context "when params are OK for saving a service order for an existing client" do

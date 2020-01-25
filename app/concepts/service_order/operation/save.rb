@@ -74,7 +74,9 @@ class ServiceOrder::Save < Trailblazer::Operation
               "#{ service_order_date }-0000"
             else
               plus_one =
-                last_service_order_on_the_date.number.split("-").last.to_i.next
+                last_service_order_on_the_date.number.split("-").last.to_i.next.
+                # pad with leading zeroes if necessary
+                to_s.rjust(4, "0")
 
               "#{ service_order_date }-#{ plus_one }"
             end
