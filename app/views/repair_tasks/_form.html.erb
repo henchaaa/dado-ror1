@@ -1,0 +1,48 @@
+<%= form_with(**form_url_options(repair_task).merge(model: repair_task, local: true)) do |form| %>
+  <% if repair_task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(repair_task.errors.count, "error") %> prohibited this repair_task from being saved:</h2>
+
+      <ul>
+      <% repair_task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+ <hr>
+  Pieņemšanas datums: <%= form.date_field(:date) %>
+  <br>
+
+  Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'])%>
+  <br>
+
+  Iekārtas veids: <%= form.text_field(:device_name) %>
+  <br>
+
+  Parole: <%= form.text_field(:device_password) %>
+  <br>
+
+  Garantija: <%= form.check_box(:device_warranty) %>
+  <br>
+
+  Papildaprīkojums: <%= form.text_field(:device_extras)%>
+  <br>
+
+  Saglabājamā informācija: <%= form.text_field(:device_saveable_info)%>
+  <br>
+
+  Defekts: <%= form.text_field(:device_defect)%>
+  <br>
+
+  Papildus info: <%= form.text_field(:device_additional_info)%>
+  <br>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+
+<% end %>
+
+
