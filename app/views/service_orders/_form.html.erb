@@ -1,3 +1,6 @@
+
+ <%= stylesheet_link_tag "service_orders" %>
+
 <%= form_with(**form_url_options(service_order).merge(model: service_order, local: true)) do |form| %>
   <% if service_order.errors.any? %>
     <div id="error_explanation">
@@ -10,51 +13,48 @@
       </ul>
     </div>
   <% end %>
-
+  <div class="box-form">
  <hr>
-  Pieņemšanas datums: <%= form.date_field(:date) %>
-  <br>
-
-  Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'])%>
-  <br>
-
+   <div class="line1">
+     Pieņemšanas datums:
+     <%= form.date_field(:date, class:"form-date") %>
+   </div>  
+  Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'], class:("form-loc"))%>
   <%= form.fields_for("client", service_order.client) do |client_form| %>
-    Klienta vārds: <%= client_form.text_field(:first_name) %>
-    <br>
-    Klienta uzvārds: <%= client_form.text_field(:last_name) %>
-    <br>
-    Klienta tālruņa numura prefikss: <%= client_form.text_field(:phone_prefix) %>
-    <br>
-    Klienta tālruņa numurs: <%= client_form.text_field(:phone_number) %>
-    <br>
-    Klienta epasts: <%= client_form.text_field(:email) %>
-    <br>
-  <% end %>
-
-  Iekārtas veids: <%= form.text_field(:device_name) %>
-  <br>
-
-  Parole: <%= form.text_field(:device_password) %>
-  <br>
-
-  Garantija: <%= form.check_box(:device_warranty) %>
-  <br>
-
-  Papildaprīkojums: <%= form.text_field(:device_extras)%>
-  <br>
-
-  Saglabājamā informācija: <%= form.text_field(:device_saveable_info)%>
-  <br>
-
-  Defekts: <%= form.text_field(:device_defect)%>
-  <br>
-
-  Papildus info: <%= form.text_field(:device_additional_info)%>
-  <br>
-
-  <div class="actions">
-    <%= form.submit %>
+    <div class="line1">
+      Klienta vārds: <%= client_form.text_field(:first_name, class:"form-first-name") %>
+    </div>
+    Klienta uzvārds: <%= client_form.text_field(:last_name, class:"form-last-name") %>
+    <div class="line1">
+      Klienta tālruņa numura prefikss: <%= client_form.text_field(:phone_prefix, class:"form-prefix") %>
+    </div>
+    Klienta tālruņa numurs: <%= client_form.text_field(:phone_number, class:"form-phone-number") %>
+    <div class="line1">
+      Klienta epasts: <%= client_form.text_field(:email, class:"form-email") %>
+    </div>
+    <% end %>
+  
+  Iekārtas veids: <%= form.text_field(:device_name, class:"form-device-name") %>
+  <div class="line1">
+    Parole: <%= form.text_field(:device_password, class:"form-device-password") %>
   </div>
+  <%# <label class="container"> %>
+      Garantija: <%= form.check_box(:device_warranty, class:"form-checkbox") %>
+  <%# </label>     %>
+  <div class="line1">
+    Papildaprīkojums: <%= form.text_field(:device_extras, class:"form-device-extras")%>
+  </div>
+  Saglabājamā informācija: <%= form.text_field(:device_saveable_info, class:"form-device-saveable-info")%>
+  <div class="line1">
+    Defekts: <%= form.text_field(:device_defect, class:"form-device-defect")%>
+  </div>
+  Papildus info: <%= form.text_field(:device_additional_info, class:"form-device-additional-info")%>
+  <div class="actions">
+  <div class="form-button">
+    <%= form.submit%>
+  </div>  
+  </div>
+</div>  
 
 <% end %>
 

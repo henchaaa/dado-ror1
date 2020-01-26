@@ -29,7 +29,7 @@ body {
 //     font-size: 15px;
 // }
 
-// Use in index 
+// Use in service_orders/index 
 .middle-box {
     margin-top: 5%;
     margin-left: 20%;
@@ -104,4 +104,95 @@ td.a {
 }
 
 
+// use for service_orders/new 
 
+.box-for-form {
+    margin-top: 5%;
+    margin-left: 25%;
+    margin-right: 25%;
+    margin-bottom: 5%;
+    padding: 3%;
+    background-color: #F0F7D4;
+}
+
+//  For only form
+
+.line1 {
+    background-color: #E6F4AE;
+    margin-bottom: 1%;
+    margin-top: 1%;
+}
+
+.form-date {
+    margin: 2%;
+    margin-left: 54.9%;
+}
+
+.form-loc {
+    margin-left: 57.2%;
+}
+
+.form-first-name {
+    margin-left: 52%;
+}
+
+.form-last-name {
+    margin-left: 49.54%;
+}
+
+.form-prefix {
+    margin-left: 32.87%;
+}
+
+.form-phone-number {
+   margin-left: 41.94%;
+}
+
+.form-email {
+    margin-left: 50.9%;
+}
+
+.form-device-name {
+    margin-left: 51.14%;
+}
+
+// .container input {
+//     position: absolute;
+//     opacity: 0;
+//     cursor: pointer;
+//     height: 0;
+//     width: 0;
+//   }
+
+.form-checkbox {
+
+    position: absolute;
+    height: 25px;
+    width: 39%;
+    background-color: #eee;
+}
+
+.form-device-password {
+    margin-left: 59.07%;
+}
+
+.form-device-extras {
+    margin-left: 47.5%;
+}
+
+.form-device-saveable-info {
+    margin-left: 39.67%;
+}
+
+.form-device-defect {
+    margin-left: 57.881%;
+}
+
+.form-device-additional-info {
+    margin-left: 52.24%;
+}
+
+.form-button {
+    margin-left: 77%;
+    margin-top: 3%;
+}

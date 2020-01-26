@@ -5,10 +5,11 @@
   <div class="header">
     <div class="header-text">
       <h2>New Service Order</h2>
+      
     </div>  
   </div>  
-
-  <%= render 'form', service_order: @service_order %>
-
-  <%= link_to 'Back', service_orders_path %>
+  <div class="box-for-form">
+    <%= render 'form', service_order: @service_order %>
+    <%= link_to 'Back', service_orders_path %>
+  </div>
 </body>
