@@ -12,6 +12,26 @@ class ServiceOrder::Save < Trailblazer::Operation
   #    "model" => ServiceOrder.find_by(id: params[:id]) || ServiceOrder.new
   #  )
 
+  include Sanitization
+
+  SANITIZATION_RULES = {
+    "date" => [:without_whitespace],
+    "location" => [:squish],
+    "device_name" => [:squish],
+    "device_password" => [:squish],
+    "device_extras" => [:squish],
+    "device_saveable_info" => [:squish],
+    "device_defect" => [:squish],
+    "device_additional_info" => [:squish],
+    "client" => {
+      "first_name" => [:squish],
+      "last_name" => [:squish],
+      "phone_prefix" => [:without_whitespace],
+      "phone_number" => [:without_whitespace],
+      "email" => [:without_whitespace]
+    }.freeze
+  }.freeze
+
   class Present < Trailblazer::Operation
     step :setup_model!
     step :setup_contract!
@@ -33,13 +53,24 @@ class ServiceOrder::Save < Trailblazer::Operation
   end
 
   step Nested(ServiceOrder::Save::Present)
+  step :sanitize!
   step Contract::Validate(name: "resource")
   step :persist!
 
   private
 
+    def sanitize!(options, **)
+      options["params"] = sanitized_params(
+        options["params"], SANITIZATION_RULES
+      )
+
+      true
+    end
+
     def persist!(options, **)
       options["contract.resource"].save do |params|
+        params = params[:service_order]
+
         client = nil
 
         options["contract.resource"].client.save do |client_params|
@@ -57,9 +88,9 @@ class ServiceOrder::Save < Trailblazer::Operation
         if options["model"].persisted?
           # TODO
         else
-          service_order = ServiceOrder.new(params[:service_order])
+          service_order = ServiceOrder.new(params)
 
-          service_order_date = params[:service_order]["date"].to_date
+          service_order_date = params["date"].to_date
 
           last_service_order_on_the_date = ServiceOrder.
             where(date: service_order_date).order(id: :desc).limit(1).first
