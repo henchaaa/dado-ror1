@@ -31,4 +31,6 @@ module Dado
     config.generators.system_tests = nil
   end
 end
+
 PHONE_PREFIXES = ["00371"].freeze
+EMAIL_REGEX = %r'\A\S+@\S+\.\S+\z'.freeze
