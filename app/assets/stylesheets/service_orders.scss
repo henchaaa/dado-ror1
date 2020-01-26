@@ -4,6 +4,7 @@
 
 @import 'bootstrap';
 
+// Use in only service_order
 body {
     margin: 0;
     background-color: #B2D732;
@@ -28,7 +29,7 @@ body {
 //     font-size: 15px;
 // }
 
-
+// Use in index 
 .middle-box {
     margin-top: 5%;
     margin-left: 20%;
@@ -44,13 +45,10 @@ body {
 }
 
 .button {
-    // margin-left: 70%;
     padding: 5%;
     padding-left: 5%;
     padding-left: 2%;
     padding-right: 2%;
-    // background-color: #110934;
-    // color: #F0F7D4;
     background-color: #3E7CEF;
     color: #F0F7D4;
     text-align: center;
@@ -75,8 +73,6 @@ body {
     padding: 1%;
     padding-left: 2%;
     padding-right: 2%;
-    // background-color: #110934;
-    // color: #F0F7D4;
     background-color: #3E7CEF;
     color: #F0F7D4;
     text-align: center;
@@ -97,9 +93,6 @@ body {
 }
 
 
-.box-buttons {
-    margin-left:50%;
-}
 
 table {
     border-collapse: separate ;
@@ -107,13 +100,8 @@ table {
 }
 
 td.a {
-   padding-left: 5%;
+   padding-left: 4%;
 }
 
-td.b {
-    padding-left: 10%;
-}
 
-th.a {
-    padding-right: 10%;
-}
+

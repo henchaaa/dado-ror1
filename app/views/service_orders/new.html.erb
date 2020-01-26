@@ -1,5 +1,14 @@
-<h1>New Service Order</h1>
+<head>
+ <%= stylesheet_link_tag "service_orders" %>
+</head> 
+<body>
+  <div class="header">
+    <div class="header-text">
+      <h2>New Service Order</h2>
+    </div>  
+  </div>  
 
-<%= render 'form', service_order: @service_order %>
+  <%= render 'form', service_order: @service_order %>
 
-<%= link_to 'Back', service_orders_path %>
+  <%= link_to 'Back', service_orders_path %>
+</body>
