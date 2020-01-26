@@ -3,7 +3,7 @@ class ServiceOrdersController < ApplicationController
 
   # GET /service_orders
   def index
-    @service_orders = ServiceOrder.all.order(id: :desc).limit(10)
+    @service_orders = ServiceOrder::Collector.call(params: params.permit!.to_h)
   end
 
   # GET /service_orders/new

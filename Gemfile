@@ -6,6 +6,9 @@ ruby '2.6.5'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.4', '>= 5.2.4.1'
 
+# Provides UNION etc.
+gem "active_record_extended", "~> 1.4"
+
 gem "trailblazer", ">= 2.0.7", "< 2.1"
 gem "trailblazer-rails", "~> 1.0.11"
 
@@ -68,6 +71,12 @@ group :development do
   gem 'spring-watcher-listen', '~> 2.0.0'
   gem "better_errors"
   gem "binding_of_caller"
+
+  # Style & lint
+  gem "rubocop", "~> 0.79", require: false
+  gem "rubocop-performance", "~> 1.5", require: false
+  gem "rubocop-rails", "~> 2.4", require: false
+  gem "rubocop-rspec", "~> 1.37", require: false
 end
 
 group :test do
