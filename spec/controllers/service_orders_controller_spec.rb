@@ -6,10 +6,24 @@ RSpec.describe ServiceOrdersController do
 
   before { session[:user_id] = user.id }
 
+  describe "GET :index" do
+    subject(:make_request) { get :index, params: params }
+
+    let(:params) { {number: "123"} }
+
+    it "collects filtered records and renders" do
+      expect(ServiceOrder::Collector).to(
+        receive(:call).with(params: hash_including(number: "123")).once
+      )
+
+      make_request
+    end
+  end
+
   describe "POST :create" do
     subject(:make_request) { post :create, params: params }
 
-    let(:params) { {test: "1"} }
+    let(:params) { {service_order_contract: {test: "1"}} }
 
     context "when creating a ServiceOrder succeeds" do
       let(:mock_record) { instance_double("ServiceOrder", id: 1) }
