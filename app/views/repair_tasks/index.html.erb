@@ -1,0 +1,14 @@
+<head>
+  <%= stylesheet_link_tag "repair_tasks" %>
+</head>
+<body>
+  <div class="header">
+      <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
+      <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
+  </div> 
+  <div class="middle-box">
+   <div class="index-button">
+      <%= link_to 'Repair', new_repair_task_path, class:"button-repair-tasks"%>
+    </div>
+  </div>
+ </body>

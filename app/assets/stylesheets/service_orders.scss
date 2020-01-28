@@ -10,26 +10,7 @@ body {
     background-color: #B2D732;
 }
 
-.header {
-    margin-top: 1%;
-    margin-left: 3%;
-    margin-right: 3%;
-    padding: 1%;
-    background-color: #110934;
-}
 
-.header-text {
-    color: #F0F7D4;
-    font-size: 24px;
-    padding-right: 1px;
-    width: auto;
-}
-
-// .header-option {
-//     font-size: 15px;
-// }
-
-// Use in service_orders/index 
 .middle-box {
     margin-top: 5%;
     margin-left: 20%;
@@ -97,6 +78,10 @@ body {
 table {
     border-collapse: separate ;
     width: 100%;
+}
+
+td {
+    text-size-adjust: 10px;
 }
 
 td.a {
@@ -196,3 +181,53 @@ td.a {
     margin-left: 77%;
     margin-top: 3%;
 }
+
+// Use only for Show
+
+.show-box {
+    margin-top: 5%;
+    margin-left: 5%;
+    margin-right: 7%;
+    padding:1%;
+
+    border: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    box-shadow: inset 0 0 3px #000;
+
+    background-color: #F0F7D4;
+}
+
+.show-table {
+    margin:0;
+    padding: auto;
+}
+
+.show-button {
+    margin-left: 48%;
+    margin-top: 2%;
+}
+
+.button-show {
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #3E7CEF;
+    color: #F0F7D4;
+    text-align: center;
+    cursor: pointer;  
+    outline: none; 
+}
+
+.button-show:hover {
+    background-color: #F0F7D4;
+    border:solid;
+    box-shadow: 0 2px #999;
+}
+
+.button-show:active {
+    background-color: #DEEEA0;
+    border:solid;
+    box-shadow: 0 2px #999;
+}
+  

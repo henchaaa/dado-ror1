@@ -11,33 +11,25 @@
     </div>
   <% end %>
 
- <hr>
-  Pieņemšanas datums: <%= form.date_field(:date) %>
+
+  
+
+  Meistars: <%= form.select(:repairer_id, ['1','2','3','4'])%>
   <br>
 
-  Pieņemšanas vieta: <%= form.select(:location, ['Ausekļa iela 9'])%>
+  
+  Status: <%= form.text_field(:status) %>
   <br>
 
-  Iekārtas veids: <%= form.text_field(:device_name) %>
+  Meistara Izmaksas: <%= form.text_field(:work_cost_cents) %>
   <br>
 
-  Parole: <%= form.text_field(:device_password) %>
+  Matreālās izmaksas: <%= form.text_field(:materials_cost_cents) %>
+  <br>
+  
+   Matreālās izmaksas: <%= form.text_field(:materials_cost_cents) %>
   <br>
 
-  Garantija: <%= form.check_box(:device_warranty) %>
-  <br>
-
-  Papildaprīkojums: <%= form.text_field(:device_extras)%>
-  <br>
-
-  Saglabājamā informācija: <%= form.text_field(:device_saveable_info)%>
-  <br>
-
-  Defekts: <%= form.text_field(:device_defect)%>
-  <br>
-
-  Papildus info: <%= form.text_field(:device_additional_info)%>
-  <br>
 
   <div class="actions">
     <%= form.submit %>

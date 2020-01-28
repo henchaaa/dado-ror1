@@ -4,12 +4,8 @@
 
 <body>
  <div class="header">
-  <div class="header-text">
-  <h2> Service Orders  <h2>
-  </div> 
-    <%# <div class="header-option"> %>
-     
-    <%# </div> %>
+     <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
+    <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
  </div> 
   <div class="middle-box">
     <div class="tbody">

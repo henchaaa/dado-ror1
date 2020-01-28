@@ -1,0 +1,75 @@
+
+body {
+    margin: 0;
+    background-color: #B2D732;
+}
+
+.middle-box {
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right:22%;
+    padding:0.5%;
+
+    border: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    box-shadow: inset 0 0 3px #000;
+
+    background-color: #F0F7D4;
+}
+
+.middle-box {
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right:22%;
+    padding:0.5%;
+
+    border: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    box-shadow: inset 0 0 3px #000;
+
+    background-color: #F0F7D4;
+}
+
+.button-repair-tasks {
+    padding: 0.5%;
+    padding-left: 2%;
+    padding-right: 2%;
+    background-color: #3E7CEF;
+    color: #F0F7D4;
+    text-align: center;
+    cursor: pointer;  
+    outline: none; 
+}
+
+.button-repair-tasks:hover {
+    background-color: #F0F7D4;
+    border:solid;
+    box-shadow: 0 2px #999;
+}
+
+.button-repair-tasks:active {
+    background-color: #DEEEA0;
+    border:solid;
+    box-shadow: 0 2px #999;
+}
+
+.index-button {
+    margin-left: 48%;
+    margin-top: 2%;
+}
+
+.new-middle-box {
+    margin-top: 5%;
+    margin-left: 35%;
+    margin-right: 37%;
+    padding:0.5%;
+
+    border: solid;
+    border-radius: 2px;
+    border-width: 3px;
+    box-shadow: inset 0 0 3px #000;
+
+    background-color: #F0F7D4;
+}

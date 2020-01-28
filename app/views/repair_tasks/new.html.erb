@@ -1,5 +1,15 @@
-<h1>New Repair Task</h1>
+<head>
+  <%= stylesheet_link_tag "repair_tasks" %>
+</head>
+<body>
+  <div class="header">
+      <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
+      <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
+  </div> 
 
-<%= render "form", repair_task: @repair_task %>
+  <div class="new-middle-box">
+    <%= render "form", repair_task: @repair_task %>
 
-<%= link_to 'Back', repair_tasks_path %>
+    <%= link_to 'Back', repair_tasks_path %>
+  </div>
+</body>

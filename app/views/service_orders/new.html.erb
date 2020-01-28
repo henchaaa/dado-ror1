@@ -2,12 +2,10 @@
  <%= stylesheet_link_tag "service_orders" %>
 </head> 
 <body>
-  <div class="header">
-    <div class="header-text">
-      <h2>New Service Order</h2>
-      
-    </div>  
-  </div>  
+  <div class="header"> 
+    <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
+    <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
+ </div> 
   <div class="box-for-form">
     <%= render 'form', service_order: @service_order %>
     <%= link_to 'Back', service_orders_path %>

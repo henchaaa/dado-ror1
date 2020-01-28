@@ -1,4 +1,7 @@
-<h1>Editing Service Order</h1>
+<div class="header">
+    <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
+    <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
+ </div> 
 
 <%= render 'form', service_order: @service_order %>
 
