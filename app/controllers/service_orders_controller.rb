@@ -4,6 +4,11 @@ class ServiceOrdersController < ApplicationController
   # GET /service_orders
   def index
     @service_orders = ServiceOrder::Collector.call(params: params.permit!.to_h)
+    respond_to do |format|
+      format.html
+      format.json
+      format.pdf {render template: "service_orders/file", pdf:"file"}
+    end
   end
 
   # GET /service_orders/new

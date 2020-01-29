@@ -43,11 +43,12 @@ gem 'jbuilder', '~> 2.5'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 
-# Binary for wkhtmltopdf for wicked_pdf
-gem "wkhtmltopdf-binary", ">= 0.12"
 
 # Generates PDFs from HTML
 gem "wicked_pdf", "~> 1.4"
+
+# Binary for wkhtmltopdf for wicked_pdf
+gem "wkhtmltopdf-binary", ">= 0.12"
 
 # Admin interface under /admin
 gem "rails_admin", "~> 2.0"
