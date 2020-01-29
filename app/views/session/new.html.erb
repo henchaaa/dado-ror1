@@ -1,19 +1,22 @@
 <%= stylesheet_link_tag "sessions" %>
 <body>
- <div class="failed_box">
-  <h2>Datoru Doktorāts</h2>
-  <% flash.each do |type, msg| %>
-    <div class="login_failed">
-      <%= msg %>
-    </div>
-  <% end %>
-  <%= form_tag(login_path) do %>
-    <%#= label_tag :email %>
-    <%= text_field_tag :email, "Email", class:"login_field" %> <br>
-    <%#= label_tag :password %>
-    <%= password_field_tag :password, "Password", class:"login_field" %> <br>
-    <%= submit_tag "Login", class:"login_button" %>
-  <%end%>
+  <div class="login_box">
+    <div class="failed_box">
+      <h2>Datoru Doktorāts</h2>
+      <% flash.each do |type, msg| %>
+        <div class="login_failed">
+          <%= msg %>
+        </div>
+      <% end %>
+      <%= form_tag(login_path) do %>
+        <%#= label_tag :email %>
+        <%= text_field_tag :email, "Email", class:"login_field" %> <br>
+        <%#= label_tag :password %>
+        <%= password_field_tag :password, "Password", class:"login_field" %> <br>
+        <%= submit_tag "Login", class:"login_button" %>
+      <%end%>
 
- </div>
+    </div>
+  </div>
+
 </body>

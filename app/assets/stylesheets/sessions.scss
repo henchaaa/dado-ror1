@@ -21,6 +21,19 @@ body {
 
 }
 
+.login_box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding-bottom: 3%;
+    padding-left: 3%;
+    padding-right: 2.5%;
+    padding-top: 3%;
+    box-shadow: 0px 0px 1px 1px rgb(99, 99, 99);
+    background-color: white;
+}
+
 
 
 .login_button {
