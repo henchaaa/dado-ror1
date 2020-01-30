@@ -33,12 +33,14 @@
         <td> <%= @service_order.device_saveable_info %> </td>
         <td> <%= @service_order.device_defect %> </td>
         <td> <%= @service_order.device_additional_info %> </td>
+        <td> <%= @service_order.client.first_name %> </td>
       </tr>
     </table>
   </div>
   <div class="show-button">
     <%= link_to 'Edit', edit_service_order_path(@service_order), class:"button-show" %> |
     <%= link_to 'Back', service_orders_path, class:"button-show"%>
+    <%= link_to 'Print', service_order_path(@service_order),  class:"button-show "%>
   </div>
 </div>
 

@@ -7,7 +7,8 @@ class ServiceOrdersController < ApplicationController
     respond_to do |format|
       format.html
       format.json
-      format.pdf {render template: "service_orders/file", pdf:"file"}
+      format.pdf {render :pdf => "service_orders/file",
+      :template => '/file', formats: :html, encoding: 'utf8'}
     end
   end
 
@@ -46,6 +47,13 @@ class ServiceOrdersController < ApplicationController
   # GET /service_orders/1
   def show
     @service_order = ServiceOrder.find(params[:id])
+    respond_to do |format|
+         format.html
+         format.json
+         format.pdf do 
+           render pdf: "show.pdf.erb", encoding: 'utf8', formats: :pdf
+         end
+       end
   end
 
   # GET /service_orders/1/edit
@@ -87,3 +95,4 @@ class ServiceOrdersController < ApplicationController
       p
     end
 end
+
