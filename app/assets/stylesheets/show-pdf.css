@@ -1,0 +1,95 @@
+body {
+    font-family: Dejavu Sans;
+    font-size: 18px; 
+}
+
+table {
+    border-collapse: separate;
+    border-spacing: 100px 10px;
+}
+
+.header {
+    padding: 5px;
+    background-color: #EF7F1A;
+    text-align: right;
+}
+
+.header-text {
+    float: right;
+}
+
+.header-logo {
+    margin-right: 500px;
+    padding: 0;
+    float: none;
+
+}
+
+h2 {
+    margin-bottom: 10px;
+}
+
+p.row {
+    font-style: normal;
+    font-size: 16px;
+    border: solid;
+    padding: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+p.header {
+    font-size: 12px;
+    line-height: 0.5;
+}
+
+
+hr.between {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    background-color: orangered; 
+    height: 1px; 
+    border: 0;
+}
+
+hr.bottom {
+    margin-top: 50px;
+    margin-bottom: 15px;
+    background-color: orangered; 
+    height: 1px; 
+    border: 0;
+}
+
+td.client {
+    text-align: right;
+}
+
+td.device {
+    text-align: center;
+}
+
+h3.bottom {
+    color: red;
+    text-align: center;
+}
+
+p.bottom {
+    color: red;
+    text-align: center;
+}
+
+p.signature {
+    margin-top: 50px;
+    text-align: center;
+}
+
+
+.border1 {
+    margin: 5px;
+    margin-top: 20px;
+    padding:5px;
+    border: solid;
+}
+
+
+

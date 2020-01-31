@@ -40,7 +40,7 @@
   <div class="show-button">
     <%= link_to 'Edit', edit_service_order_path(@service_order), class:"button-show" %> |
     <%= link_to 'Back', service_orders_path, class:"button-show"%>
-    <%= link_to 'Print', service_order_path(@service_order),  class:"button-show "%>
+    <%= link_to 'Print', service_order_path(@service_order, :format => :pdf),:format => :pdf,  class:"button-show "%>
   </div>
 </div>
 

@@ -1,5 +1,71 @@
-<% @service_order = ServiceOrder.find(params[:id]) do |service_order|%>
-
-<%= service_order.number%>
-
-<% end %>
+<head>
+  <%= wicked_pdf_stylesheet_link_tag "show-pdf" -%>
+</head>
+<body>
+  <div class="header">
+    <p class="header"> Veikals, serviss "DATORU DOKTORĀTS" </p>
+    <p class="header"> Veikals - Tel. nr. 28866886 E-pasts info@datorudoktorats.lv </p>
+    <p class="header"> Serviss - Tel. nr. 22007050 E-pasts serviss @datorudoktorats.lv </p>
+    <p class="header"> Darba Laiks : </p> 
+    <p class="header"> P-Pk- 9:00-18:00 </p>
+    <p class="header"> S- 9:00-14:00 </p>
+    <p class="header"> Sv- Brīvs </p>
+  </div>
+  <h1> Informācija par klientu: </h1>
+  <div class="border1">
+    <table>
+      <tr>
+      <% @service_order = ServiceOrder.find(params[:id]) do |service_order|%> 
+        <th> Vārds: </th>
+        <th> Uzvārds: </th>
+        <th> Telefons: </th>
+        <th> E-pasts: </th>
+        <th> Datums: </th>
+      </tr>
+      <tr>
+          <td class="client"> <%= service_order.client.first_name%> </td>
+          <td class="client"> <%= service_order.client.last_name%> </td>
+          <td class="client"> <%= service_order.client.phone_number%> </td>
+          <td class="client"> <%= service_order.client.email%> </td>
+          <td class="client"> <%= service_order.date%> </td>    
+      </tr>
+    </table>
+  </div> 
+  <hr class="between">
+  <h1> Informācija par Ierīci: </h1>
+  <div class="border1">
+    <table>
+      <tr>
+        <th> Pasūtijuma numurs: </th>
+        <th> Ierīces nosaukums: </th>
+        <th> Ierīces parole: </th>
+        <th> Ierīces garantija: </th>
+      </tr>
+      <tr>
+        <td class="device"> <%= service_order.number%> </td>
+        <td class="device"> <%= service_order.device_name%> </td>
+        <td class="device"> <%= service_order.device_password%> </td>
+        <td class="device"> <%= service_order.device_warranty%> </td>
+      </tr>
+    </table>
+  </div>
+  <h2> Ierīces papildiekārtas: </h2>
+    <p class="row"> <%= service_order.device_extras%> </p>
+  <h2> Ierīces Saglabājamā informācija:</h2>
+    <p class="row"> <%= service_order.device_saveable_info%> </p>
+  <h2> Ierīces defekts: </h2>
+    <p class="row"> <%= service_order.device_defect%> </p>
+  <h2> Ierīces papildapraksts: </h2>
+    <p class="row"> <%= service_order.device_additional_info%> </p>
+  <hr class="bottom">
+  <h3 class="bottom"> Noteikumi. </h3>
+  <h3 class="bottom"> Atteikšanās no remonta! </h3>
+  <p class="bottom"> Ja pēc diagnostikas veikšanas un defekta konstatēšanas klients atsakās no iespējamā remonta, klientam jāsedz diagnostikas
+izmaksas pēc servisa cenrāža. </p>
+  <h3 class="bottom"> Tehnikas uzglabāšana! </h3>
+  <p class="bottom"> Ja 7 kalendāro dienu laikā pēc paziņošanas uz norādīto telefona numuru (balss zvana vai SMS veidā) servisā nodotā tehnika
+netiek izņemta, klients maksā uzglabāšanas maksu 1.00 EUR par katru nokavēto dienu. </p>
+  <p class="signature"> Darbinieka paraksts:___________
+Klienta paraksts (ar noteikumiem iepazinos):___________ </p>
+  <% end %>
+</body>
