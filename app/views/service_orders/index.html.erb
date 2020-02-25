@@ -26,6 +26,7 @@
               <td> <%= service_order.device_name %> </td>
               <td> </td>
               <td> </td>
+                <td> <%= link_to 'Repair', repair_path %>  </td>
                 <td class="a"><%= link_to 'Show', service_order, class:"button"%> </td>
                 <td class="a"><%= link_to 'Edit', edit_service_order_path(service_order), class:"button"%></td>
                 <td class="a"><%= link_to 'Destroy', service_order, class:"button",  method: :delete, data: { confirm: 'Are you sure?' } %></td>

@@ -80,6 +80,9 @@ class ServiceOrdersController < ApplicationController
     end
   end
 
+  def mission
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_service_order
