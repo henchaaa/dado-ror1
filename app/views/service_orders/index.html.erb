@@ -6,6 +6,16 @@
  <div class="header">
      <%= link_to 'Service Orders', service_orders_path, class:"header-option"%>
     <%= link_to 'Repair Tasks', repair_tasks_path, class:"header-option"%>
+
+    <%= form_tag(search_page_path, :method => "get",   
+    class: 'navbar-form navbar-left') do %>  
+    <div class="input-group">  
+      <%= search_field_tag :search, params[:search], placeholder: "Search", class: "form-control" %>  
+      <div class="input-group-btn">  
+        <%= button_tag "", :class => 'btn btn-info glyphicon glyphicon-search',:name => nil%>  
+      </div>  
+    </div>  
+    <% end %>
  </div> 
   <div class="middle-box">
     <div class="tbody">
@@ -26,7 +36,7 @@
               <td> <%= service_order.device_name %> </td>
               <td> </td>
               <td> </td>
-                <td> <%= link_to 'Repair', repair_path %>  </td>
+                <td class="a"> <%= link_to 'Repair', repair_path, class: "button" %>  </td>
                 <td class="a"><%= link_to 'Show', service_order, class:"button"%> </td>
                 <td class="a"><%= link_to 'Edit', edit_service_order_path(service_order), class:"button"%></td>
                 <td class="a"><%= link_to 'Destroy', service_order, class:"button",  method: :delete, data: { confirm: 'Are you sure?' } %></td>

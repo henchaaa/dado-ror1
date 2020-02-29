@@ -47,6 +47,7 @@ class ServiceOrdersController < ApplicationController
   # GET /service_orders/1
   def show
     @service_order = ServiceOrder.find(params[:id])
+    @repair_tasks = RepairTasks.find(params[:id])
     respond_to do |format|
          format.html
          format.json
@@ -63,7 +64,7 @@ class ServiceOrdersController < ApplicationController
   # PATCH/PUT /service_orders/1
   def update
     respond_to do |format|
-      if @service_order.update(service_order_params)
+      if @service_order.update(service_order_contract)
         format.html { redirect_to @service_order, notice: 'Service order was successfully updated.' }
       else
         format.html { render :edit }
@@ -80,7 +81,13 @@ class ServiceOrdersController < ApplicationController
     end
   end
 
-  def mission
+  def search
+    if params[:search].blank?  
+      redirect_to(root_path, alert: "Empty field!") and return  
+    else  
+      @params = params[:search].downcase  
+      # @service_order = ServiceOrder.all.where("lower(device_name) LIKE :search", search: "%#{@params}%" )
+    end  
   end
 
   private
@@ -97,5 +104,5 @@ class ServiceOrdersController < ApplicationController
 
       p
     end
-end
+
 
