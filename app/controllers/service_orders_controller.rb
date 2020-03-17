@@ -82,25 +82,23 @@ class ServiceOrdersController < ApplicationController
   end
 
   def search
-    if params[:search].blank?  
+    if params[:params].blank?  
       redirect_to(root_path, alert: "Empty field!") and return  
     else 
+
+      return @call if defined?(@call)
+
+      collection = ServiceOrder.all
+
+      collection = filter_by_number!(collection)
+      collection = filter_by_status!(collection)
+      collection = filter_by_repairer!(collection)
+      collection = filter_by_client_phone!(collection)
+      collection = filter_by_client_last_name!(collection)
+
+      @call = collection.order(id: :desc).limit(10)
       
-
-      collection = ServiceOrder.all params[:search].downcase
-
-      def call
-        return @call if defined?(@call)
-        collection = filter_by_number!(collection)
-        collection = filter_by_status!(collection)
-        collection = filter_by_repairer!(collection)
-        collection = filter_by_client_phone!(collection)
-        collection = filter_by_client_last_name!(collection)
-    
-        @call = collection.order(id: :desc).limit(10)
-
-        
-      end
+      
     end 
   end
 
@@ -118,8 +116,6 @@ class ServiceOrdersController < ApplicationController
 
       p
     end
-
-
 
     def filter_by_number!(collection)
       return collection if params[:number].blank?
@@ -176,4 +172,5 @@ class ServiceOrdersController < ApplicationController
         Client.where(last_name: params[:last_name])
       )
     end
+
   end
