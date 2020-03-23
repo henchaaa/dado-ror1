@@ -88,6 +88,8 @@ class ServiceOrdersController < ApplicationController
 
       return @call if defined?(@call)
 
+      @params = params[:params]
+
       collection = ServiceOrder.all
 
       collection = filter_by_number!(collection)
@@ -96,8 +98,11 @@ class ServiceOrdersController < ApplicationController
       collection = filter_by_client_phone!(collection)
       collection = filter_by_client_last_name!(collection)
 
-      @call = collection.order(id: :desc).limit(10)
+
+      @call = collection.order(collection: :desc).limit(10)
+
       
+
       
     end 
   end
